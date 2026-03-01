@@ -22,7 +22,7 @@ function validateCourseBody(req, res, next) {
     if (!courseCode || typeof courseCode !== 'string') errors.push('courseCode is required and must be a string');
     if (!title || typeof title !== 'string') errors.push('title is required and must be a string');
     if (credits === undefined || !Number.isInteger(Number(credits))) errors.push('credits is required and must be an integer');
-    if (semester === undefined || (typeof semester !== 'string' && typeof semester !== 'number')) errors.push('semester is required');
+    if (semester === undefined || (typeof semester !== 'string')) errors.push('semester is required and must be a string');
     if (errors.length) return res.status(400).json({ errors });
     req.body.credits = Number(credits);
     next();
